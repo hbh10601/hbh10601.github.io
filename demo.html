@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>匯率計算機</title>
+        <link rel="stylesheet" href="mystyle.css">
+    </head>
+    <body>
+        <img class ="style" src="images/coin.jpg" alt="錢幣圖片" width="200" height="200">
+        <div>
+            <label>請輸入台幣金額：</label>
+            <label id="result"></label>
+            <input id="NT" type="text" placeholder="ex:1000" value=""/>
+            <br>
+            <input id="calculate" type="button" value="計算">
+            <button onclick="cleanstring()">重新開始</button>
+            <button onclick="myFunction()">更改深淺模式</button><!--整個body可以轉換成深色模式-->
+            <hr>
+            Result:<p class="calculation"></p>
+    </div>
+    <script>
+        function myFunction(){
+            var element=document.body;
+            element.classList.toggle("dark");
+        }
+
+        function cleanstring(){
+            document.getElementById("NT").value = "";
+            document.getElementById("result").innerHTML = "";
+        }
+
+        var calculation = document.querySelector('.calculation')
+
+        document.getElementById('calculate').onclick = function(){
+            var result = '';
+            var NTdollar = parseFloat(document.getElementById('NT').value);
+            
+            var rateofUSD = 0.03304;
+            var USD=NTdollar*rateofUSD;
+            var USD = USD.toFixed(2)
+
+            var rateofEUR = 0.03115;
+            var EUR = NTdollar*rateofEUR;
+            var EUR = EUR.toFixed(2)
+
+            var rateofJPY = 4.78468;
+            var JPY = NTdollar*rateofJPY;
+            var JPY = JPY.toFixed(2)
+
+            var rateofKRW = 46.59832;
+            var KRW = NTdollar*rateofKRW;
+            var KRW = KRW.toFixed(2)
+            
+            var rateofAUD = 0.05086;
+            var AUD = NTdollar*rateofAUD;
+            var AUD = AUD.toFixed(2)
+            result = '換算結果: '+'美元：'+USD+'       歐元：'+EUR+'      日圓：'+JPY+'      韓元：'+KRW+'      澳幣：'+AUD;
+        calculation.innerHTML = result;
+    }
+        </script>
+    </body>
+</html>
